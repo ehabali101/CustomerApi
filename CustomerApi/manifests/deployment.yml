@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customerapi-deployemnt
+spec:
+  selector:
+    matchLabels:
+      app: customerapi-pod
+  template:
+    metadata:
+      labels:
+        app: customerapi-pod
+    spec:
+      containers:
+      - name: customerapi-container
+        image: container.azurecr.io/customerapi:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
