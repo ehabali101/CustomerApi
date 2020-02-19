@@ -93,43 +93,12 @@ namespace CustomerApi.Tests.Controllers
 
             // Act
             var result = await _controller.GetCustomer(id);
-            //var okResult = result.Result as OkObjectResult;
 
             // Assert
             Assert.NotNull(result);
             Assert.IsType<NotFoundResult>(result.Result);
         }
 
-        [Fact]
-        public async Task CustomerExists_WhenCalled_ReturnsTrue()
-        {
-            // Arrange
-            var id = new Guid("ab2bd817-98cd-4cf3-a80a-53ea0cd9c200");
-            _mockRepository.Setup(repo => repo.CustomerExists(id))
-               .ReturnsAsync(true);
 
-            // Act
-            var result = await _controller.CustomerExists(id);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.True(result.Value);
-        }
-
-        [Fact]
-        public async Task CustomerExists_WhenCalled_ReturnsFalse()
-        {
-            // Arrange
-            var id = new Guid("ab2bd817-98cd-4cf3-a80a-53ea0cd9c200");
-            _mockRepository.Setup(repo => repo.CustomerExists(id))
-               .ReturnsAsync(false);
-
-            // Act
-            var result = await _controller.CustomerExists(id);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.False(result.Value);
-        }
     }
 }

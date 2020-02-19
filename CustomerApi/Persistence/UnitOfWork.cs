@@ -12,6 +12,7 @@ namespace CustomerApi.Persistence
     public class UnitOfWork : IUnitOfWork
     {
         private CustomerDbContext _context;
+        public ICustomerRepository Customers { get; private set; }
 
         public UnitOfWork(CustomerDbContext context)
         {
@@ -19,9 +20,7 @@ namespace CustomerApi.Persistence
 
             Customers = new CustomerRepository(_context);
         }
-
-        public ICustomerRepository Customers { get; private set; }
-
+    
         public async Task EnsureCreatedAsync()
         {
             await _context.Database.EnsureDeletedAsync();

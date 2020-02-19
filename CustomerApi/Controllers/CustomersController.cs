@@ -53,12 +53,5 @@ namespace CustomerApi.Controllers
             return Ok(result);
         }
 
-
-        public async Task<ActionResult<bool>> CustomerExists(Guid id)
-        {
-            var result = await _unitOfWork.Customers.CustomerExists(id);
-
-            return Ok(result);
-        }
     }
 }
