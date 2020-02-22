@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: customerapi-container
-        image: container.azurecr.io/customerapi:v1
+        image: vehicle.azurecr.io/customerapi:v1
         resources:
           limits:
             memory: "128Mi"
